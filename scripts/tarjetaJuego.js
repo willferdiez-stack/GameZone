@@ -31,8 +31,8 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
     const ul = document.createElement("ul");
     divInfo.appendChild(ul);
 
-    ul.appendChild(crearLista(vg.released, "../img/Pulse.png"));
-    ul.appendChild(crearLista(vg.rating, "../img/Alien.png"));
+    ul.appendChild(crearLista(vg.released, "../img/Release-Date.png"));
+    ul.appendChild(crearLista(vg.rating, "../img/Rating-Star.svg"));
 
     // Recuperar los favoritos guardados
     let favoritos = JSON.parse(
@@ -104,7 +104,7 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
 
     buttonVerMas.addEventListener("click", function () {
         localStorage.setItem("IdPersonaje", vg.id);
-        location.href = "infoPersonaje.html";
+        location.href = "infoJuego.html";
     });
 
     // const iconVerMas = document.createElement("img");

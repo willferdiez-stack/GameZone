@@ -1,3 +1,4 @@
+import { cargarHeaderFooter } from "../componentes/componentes.js";
 import { Juego } from "../clases/claseJuego.js";
 import { Desarrollador } from "../clases/claseDesarrollador.js";
 
@@ -70,3 +71,5 @@ export async function getDesarrolladores(numberPage = 1) {
         }
     };
 }
+
+cargarHeaderFooter();
