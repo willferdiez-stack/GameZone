@@ -1,0 +1,39 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 20px 5%;
+    margin-top: 40px;
+
+    background-color: #151515;
+    color: white;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footerNav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footerNav a {
+    color: white;
+    text-decoration: none;
+}
+
+.footerNav a:hover {
+    color: #64b5f6;
+}
+
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
