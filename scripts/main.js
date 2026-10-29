@@ -1,6 +1,7 @@
 import { cargarHeaderFooter } from "../componentes/componentes.js";
 import { Juego } from "../clases/claseJuego.js";
 import { Desarrollador } from "../clases/claseDesarrollador.js";
+import { Consola } from "../clases/claseConsola.js";
 
 const API_KEY  = "6f95e993ea6647dda5027fabce1c5ca4";
 
@@ -64,6 +65,38 @@ export async function getDesarrolladores(numberPage = 1) {
 
     return {
         desarrolladores,
+        info: {
+            count: data.count,
+            next: data.next,
+            previous: data.previous
+        }
+    };
+}
+
+export async function getConsolas(numberPage = 1) {
+    const API_URL = "https://api.rawg.io/api/platforms";
+
+    const params = new URLSearchParams({
+        key: API_KEY,
+        page: String(numberPage)
+    });
+
+    const response = await fetch(`${API_URL}?${params}`);
+
+    if (!response.ok) {
+        throw new Error(`Error al obtener las consolas: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.results || data.results.length === 0) {
+        throw new Error("No hay consolas disponibles");
+    }
+
+    const consolas = data.results.map(c => new Consola(c));
+
+    return {
+        consolas,
         info: {
             count: data.count,
             next: data.next,
