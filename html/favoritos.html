@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../img/mando.png">
     <script type="module" src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/listaFavoritos.js"></script>
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <title>Document</title>
@@ -16,23 +17,27 @@
 
     <h1>Favoritos</h1>
 
-    <h2>Lista de juegos favoritos</h2>
+
     <div class="listadoVGFavoritos">
-        <ul id="listaJuegos" class="listaTarjetas">
+        <h2 id="titulo-juegos">Juegos favoritos</h2>
+        <p id="sin-juegos" class="mensaje-vacio" hidden>Aún no tienes favoritos.</p>
+        <ul id="favoritos-juegos" class="listaTarjetas">
 
         </ul>
     </div>
 
-    <h2>Lista de Desarrolladores favoritos</h2>
     <div class="listadoVGFavoritos">
-        <ul id="listaDesarrolladores" class="listaTarjetas">
+        <h2 id="titulo-desarrolladores">Desarrolladores favoritos</h2>
+        <p id="sin-desarrolladores" class="mensaje-vacio" hidden>Aún no tienes favoritos.</p>
+        <ul id="favoritos-desarrolladores" class="listaTarjetas">
 
         </ul>
     </div>
-    
-    <h2>Lista de Consolas favoritas</h2>
+
     <div class="listadoVGFavoritos">
-        <ul id="listaConsolas" class="listaTarjetas">
+        <h2 id="titulo-consolas">Consolas favoritas</h2>
+        <p id="sin-consolas" class="mensaje-vacio" hidden>Aún no tienes favoritos.</p>
+        <ul id="favoritos-consolas" class="listaTarjetas">
 
         </ul>
     </div>

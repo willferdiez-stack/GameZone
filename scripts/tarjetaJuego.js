@@ -1,5 +1,8 @@
 export function crearTarjetaJuego(vg, esFavoritos = false) {
 
+    console.log("Objeto recibido:", vg);
+    console.log("Imagen del videojuego:", vg.background_image);
+
     // Tarjeta principal
     const divTarjeta = document.createElement("div");
     divTarjeta.classList.add("tarjeta");

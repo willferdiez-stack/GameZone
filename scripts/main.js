@@ -1,7 +1,7 @@
 import { cargarHeaderFooter } from "../componentes/componentes.js";
-import { Juego } from "../clases/claseJuego.js";
-import { Desarrollador } from "../clases/claseDesarrollador.js";
-import { Consola } from "../clases/claseConsola.js";
+import { Juego } from "./claseJuego.js";
+import { Desarrollador } from "./claseDesarrollador.js";
+import { Consola } from "./claseConsola.js";
 
 const API_KEY  = "6f95e993ea6647dda5027fabce1c5ca4";
 
