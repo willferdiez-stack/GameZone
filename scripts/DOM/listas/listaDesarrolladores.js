@@ -1,5 +1,5 @@
-import { getDesarrolladores } from "./main.js";
-import { crearTarjetaDesarrollador } from "./tarjetaDesarrollador.js";
+import { getDesarrolladores } from "../../main.js";
+import { crearTarjetaDesarrollador } from "../tarjetas/tarjetaDesarrollador.js";
 
 let pagina = 1;
 let listaDesarrolladores = [];

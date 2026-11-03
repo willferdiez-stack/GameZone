@@ -1,5 +1,5 @@
-import { getJuegos } from "./main.js";
-import { crearTarjetaJuego } from "./tarjetaJuego.js";
+import { getJuegos } from "../../main.js";
+import { crearTarjetaJuego } from "../tarjetas/tarjetaJuego.js";
 
 let pagina = 1;
 let listaJuegos = [];

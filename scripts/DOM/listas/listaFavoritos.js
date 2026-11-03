@@ -1,6 +1,6 @@
-import { crearTarjetaJuego } from "./tarjetaJuego.js";
-import { crearTarjetaDesarrollador } from "./tarjetaDesarrollador.js";
-import { crearTarjetaConsola } from "./tarjetaConsola.js";
+import { crearTarjetaJuego } from "../../tarjetaJuego.js";
+import { crearTarjetaDesarrollador } from "../../tarjetaDesarrollador.js";
+import { crearTarjetaConsola } from "../../tarjetaConsola.js";
 
 function leerJuegosFavoritos() {
     const guardados = localStorage.getItem("JuegosFavorito");
