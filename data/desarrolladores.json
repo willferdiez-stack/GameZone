@@ -1,0 +1,42 @@
+{
+    "count": 5,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "name": "CD PROJEKT RED",
+            "slug": "cd-projekt-red",
+            "games_count": 35,
+            "image_background": null
+        },
+        {
+            "id": 2,
+            "name": "Rockstar North",
+            "slug": "rockstar-north",
+            "games_count": 42,
+            "image_background": null
+        },
+        {
+            "id": 3,
+            "name": "Nintendo EPD",
+            "slug": "nintendo-epd",
+            "games_count": 120,
+            "image_background": null
+        },
+        {
+            "id": 4,
+            "name": "FromSoftware",
+            "slug": "fromsoftware",
+            "games_count": 65,
+            "image_background": null
+        },
+        {
+            "id": 5,
+            "name": "Team Cherry",
+            "slug": "team-cherry",
+            "games_count": 3,
+            "image_background": null
+        }
+    ]
+}

@@ -1,6 +1,6 @@
-import { crearTarjetaJuego } from "../../tarjetaJuego.js";
-import { crearTarjetaDesarrollador } from "../../tarjetaDesarrollador.js";
-import { crearTarjetaConsola } from "../../tarjetaConsola.js";
+import { crearTarjetaJuego } from "../tarjetas/tarjetaJuego.js";
+import { crearTarjetaDesarrollador } from "../tarjetas/tarjetaDesarrollador.js";
+import { crearTarjetaConsola } from "../tarjetas/tarjetaConsola.js";
 
 function leerJuegosFavoritos() {
     const guardados = localStorage.getItem("JuegosFavorito");
@@ -13,7 +13,7 @@ function leerJuegosFavoritos() {
 }
 
 function leerDesarrolladoresFavoritos() {
-    const guardados = localStorage.getItem("DesarrolladoresFavorito");
+    const guardados = localStorage.getItem("DevFavorito");
 
     if (guardados === null) {
         return [];
