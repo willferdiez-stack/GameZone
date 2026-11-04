@@ -50,10 +50,10 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
     const existe = favoritos.find(juego => juego.id === vg.id);
 
     if (existe) {
-        imgFavoritos.src = "../img/Corazon_lleno.png";
+        imgFavoritos.src = "../img/HeartFull.png";
         imgFavoritos.alt = "Quitar de favoritos";
     } else {
-        imgFavoritos.src = "../img/Heart.png";
+        imgFavoritos.src = "../img/HeartEmpty.webp";
         imgFavoritos.alt = "Añadir a favoritos";
     }
 
@@ -75,7 +75,7 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
                 juego => juego.id !== vg.id
             );
 
-            imgFavoritos.src = "../img/Heart.png";
+            imgFavoritos.src = "../img/HeartEmpty.webp";
             imgFavoritos.alt = "Añadir a favoritos";
 
             // Si estamos en Favoritos, retirar la tarjeta
@@ -88,7 +88,7 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
             // Añadir a favoritos
             favoritos.push(vg);
 
-            imgFavoritos.src = "../img/Corazon_lleno.png";
+            imgFavoritos.src = "../img/HeartFull.png";
             imgFavoritos.alt = "Quitar de favoritos";
         }
 
@@ -106,16 +106,10 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
     buttonVerMas.classList.add("verMas");
 
     buttonVerMas.addEventListener("click", function () {
-        localStorage.setItem("IdPersonaje", vg.id);
+        localStorage.setItem("IdJuego", vg.id);
         location.href = "infoJuego.html";
     });
-
-    // const iconVerMas = document.createElement("img");
-    // iconVerMas.src = "../img/Info.png";
-    // iconVerMas.classList.add("iconVerMas");
-    // iconVerMas.alt = "";
-
-    // buttonVerMas.appendChild(iconVerMas);
+    
     buttonVerMas.appendChild(document.createTextNode(" Ver más"));
 
     divTarjeta.appendChild(buttonVerMas);

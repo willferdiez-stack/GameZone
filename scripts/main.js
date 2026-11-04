@@ -201,6 +201,82 @@ export async function getConsolas(numberPage = 1) {
 //     };
 // }
 
+/**
+ * @param {number} id id del juego
+ * @returns información del juego individual
+ */
+export async function getJuego(id) {
+    const url = new URL("../data/juegos.json", import.meta.url);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("Error al obtener los datos del juego");
+    }
+
+    const data = await response.json();
+
+    console.log("ID recibido:", id);
+    console.log("ID guardado en localStorage:", localStorage.getItem("IdJuego"));
+    console.log("IDs disponibles en el JSON:", data.results.map(j => j.id));
+
+    const juegoData = data.results.find(j => j.id === Number(id));
+
+    if (!juegoData) {
+        throw new Error("No se ha encontrado el juego");
+    }
+
+    const juego = new Juego(juegoData);
+    return juego;
+}
+
+/**
+ * @param {number} id id del desarrollador
+ * @returns información del desarrollador individual
+ */
+export async function getDesarrollador(id) {
+    const url = new URL("../data/desarrolladores.json", import.meta.url);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("Error al obtener los datos del desarrollador");
+    }
+
+    const data = await response.json();
+
+    const desarrolladorData = data.results.find(d => d.id === Number(id));
+
+    if (!desarrolladorData) {
+        throw new Error("No se ha encontrado el desarrollador");
+    }
+
+    const desarrollador = new Desarrollador(desarrolladorData);
+    return desarrollador;
+}
+
+/**
+ * @param {number} id id de la consola
+ * @returns información de la consola individual
+ */
+export async function getConsola(id) {
+    const url = new URL("../data/consolas.json", import.meta.url);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("Error al obtener los datos de la consola");
+    }
+
+    const data = await response.json();
+
+    const consolaData = data.results.find(c => c.id === Number(id));
+
+    if (!consolaData) {
+        throw new Error("No se ha encontrado la consola");
+    }
+
+    const consola = new Consola(consolaData);
+    return consola;
+}
+
 export async function getElementByURL(url, type = "juego" || "desarrollador" || "consola") {
     const API_URL = url;
 

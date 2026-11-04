@@ -5,8 +5,6 @@
 
 .listaTarjetas {
     display: grid;
-
-    /* Móviles: 1 tarjeta por fila */
     grid-template-columns: 1fr;
 
     gap: 24px;
@@ -16,7 +14,6 @@
     margin: 0 auto;
     padding: 20px;
 
-    box-sizing: border-box;
     align-items: stretch;
 }
 
@@ -53,27 +50,29 @@
     min-height: 390px;
     padding: 15px;
 
-    box-sizing: border-box;
     overflow: hidden;
 
-    background-color: #efefef;
-    color: #222;
+    background-color: #1e1e24;
+    color: white;
 
+    border: 1px solid #33333d;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 25%);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 /* Efecto al pasar el ratón */
 
 .tarjeta:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 18px rgb(0 0 0 / 15%);
+    border-color: #64b5f6;
+    box-shadow: 0 8px 18px rgb(0 0 0 / 35%);
 }
 
 /* ==============================
-            IMAGENES
+   IMÁGENES
    ============================== */
 
 .tarjeta .imgJuego,
@@ -90,7 +89,7 @@
     object-position: center;
 
     border-radius: 10px;
-    background-color: #ddd;
+    background-color: #151515;
 }
 
 /* ==============================
@@ -110,7 +109,7 @@
 }
 
 /* ==============================
-   INFORMACIÓN DEL VIDEOJUEGO
+   INFORMACIÓN
    ============================== */
 
 .tarjeta .info {
@@ -127,6 +126,8 @@
 .tarjeta .nombre {
     width: 100%;
     margin: 0 0 12px;
+
+    color: white;
 
     font-size: 1.1rem;
     font-weight: bold;
@@ -158,6 +159,8 @@
 
     min-width: 0;
     margin: 0;
+
+    color: #b5b5c0;
 
     font-size: 0.9rem;
     overflow-wrap: anywhere;
@@ -212,8 +215,8 @@
     border: none;
     border-radius: 8px;
 
-    background: linear-gradient(135deg, #2196f3, #1565c0);
-    color: white;
+    background: linear-gradient(135deg, #f6f6f6, #474747);
+    color: rgb(0, 0, 0);
 
     font-size: 0.95rem;
     font-weight: bold;
@@ -224,7 +227,7 @@
 }
 
 .tarjeta .verMas:hover {
-    background: linear-gradient(135deg, #1976d2, #0d47a1);
+    background: linear-gradient(135deg, #d43939, #a10d0d);
     transform: scale(1.03);
 }
 

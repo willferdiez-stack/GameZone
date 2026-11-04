@@ -1,0 +1,88 @@
+/* ==============================
+   CONFIGURACIÓN GENERAL
+   ============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: #101014;
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* ==============================
+   TÍTULOS
+   ============================== */
+
+h1, h2, h3 {
+    color: #ffffff;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 35px 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+/* ==============================
+   PÁRRAFOS Y TEXTOS
+   ============================== */
+
+p {
+    color: #b5b5c0;
+}
+
+/* ==============================
+   ENLACES
+   ============================== */
+
+a {
+    color: #ff5959;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #f99090;
+}
+
+/* ==============================
+   BOTONES GENERALES
+   ============================== */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ==============================
+   CONTENEDORES GENERALES
+   ============================== */
+
+main {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==============================
+   SELECCIÓN DE TEXTO
+   ============================== */
+
+::selection {
+    background-color: #ff4545;
+    color: #101014;
+}

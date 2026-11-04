@@ -46,10 +46,10 @@ export function crearTarjetaDesarrollador(dev, esFavoritos = false) {
     const existe = favoritos.find(developer => developer.id === dev.id);
 
     if (existe) {
-        imgFavoritos.src = "../img/Corazon_lleno.png";
+        imgFavoritos.src = "../img/HeartFull.png";
         imgFavoritos.alt = "Quitar de favoritos";
     } else {
-        imgFavoritos.src = "../img/Heart.png";
+        imgFavoritos.src = "../img/HeartEmpty.webp";
         imgFavoritos.alt = "Añadir a favoritos";
     }
 
@@ -71,7 +71,7 @@ export function crearTarjetaDesarrollador(dev, esFavoritos = false) {
                 developer => developer.id !== dev.id
             );
 
-            imgFavoritos.src = "../img/Heart.png";
+            imgFavoritos.src = "../img/HeartEmpty.webp";
             imgFavoritos.alt = "Añadir a favoritos";
 
             // Si estamos en Favoritos, retirar la tarjeta
@@ -84,7 +84,7 @@ export function crearTarjetaDesarrollador(dev, esFavoritos = false) {
             // Añadir a favoritos
             favoritos.push(dev);
 
-            imgFavoritos.src = "../img/Corazon_lleno.png";
+            imgFavoritos.src = "../img/HeartFull.png";
             imgFavoritos.alt = "Quitar de favoritos";
         }
 
@@ -102,16 +102,10 @@ export function crearTarjetaDesarrollador(dev, esFavoritos = false) {
     buttonVerMas.classList.add("verMas");
 
     buttonVerMas.addEventListener("click", function () {
-        localStorage.setItem("IdDeveloper", dev.id);
-        location.href = "infoDeveloper.html";
+        localStorage.setItem("IdDesarrollador", dev.id);
+        location.href = "infoDesarrollador.html";
     });
 
-    // const iconVerMas = document.createElement("img");
-    // iconVerMas.src = "../img/Info.png";
-    // iconVerMas.classList.add("iconVerMas");
-    // iconVerMas.alt = "";
-
-    // buttonVerMas.appendChild(iconVerMas);
     buttonVerMas.appendChild(document.createTextNode(" Ver más"));
 
     divTarjeta.appendChild(buttonVerMas);

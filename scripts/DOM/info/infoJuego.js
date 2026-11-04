@@ -1,25 +1,39 @@
-import { getJuegos, getElementByURL } from "../../main.js";
-import { crearTarjetaEpisodioFav } from "./tarjetaEpisodio.js";
-import { crearTarjetaLugar } from "./tarjetaLugar.js";
-
+import { getJuego } from "../../main.js";
 
 const idJuego = localStorage.getItem("IdJuego");
-let favoritos = JSON.parse(localStorage.getItem("JuegosFavoritos")) || [];
-console.log("favs", favoritos, idJuego);
+
+// Recuperar favoritos
+let favoritos = JSON.parse(localStorage.getItem("JuegosFavorito")) || [];
 
 let juego;
 
+// Obtener información del juego seleccionado
 async function obtenerInfoJuego() {
-    juego = await getJuego(idJuego);
-    console.log(juego);
+    try {
+        juego = await getJuego(idJuego);
 
-    await muestraDatos();
+        if (!juego) {
+            console.error("No se ha encontrado el juego");
+            return;
+        }
+
+        muestraDatos();
+
+    } catch (error) {
+        console.error("Error al cargar el juego:", error);
+    }
 }
 
-async function muestraDatos() {
+
+function muestraDatos() {
+
     const container = document.getElementById("container");
 
-    // Limpiar el contenedor
+    if (!container) {
+        console.error("No se encuentra el contenedor del juego");
+        return;
+    }
+
     container.innerHTML = "";
 
     // =========================
@@ -29,49 +43,72 @@ async function muestraDatos() {
     const parteSuperior = document.createElement("div");
     parteSuperior.className = "juego-top";
 
-    // Crear imagen
-    const imagen = document.createElement("img");
-    imagen.src = juego.background_image;
-    imagen.alt = juego.name;
-    imagen.className = "juego-image";
+    // Imagen
+    if (juego.background_image) {
+        const imagen = document.createElement("img");
+        imagen.src = juego.background_image;
+        imagen.alt = juego.name;
+        imagen.className = "juego-image";
 
-    // Crear sección de información
+        parteSuperior.append(imagen);
+    }
+
+    // Información
     const info = document.createElement("section");
     info.className = "juego-info";
 
+    // Título
     const titulo = document.createElement("h1");
     titulo.textContent = juego.name;
 
+    // Botón de favoritos
     const botonFavorito = document.createElement("button");
     botonFavorito.className = "boton-favorito";
     botonFavorito.type = "button";
 
     const corazon = document.createElement("img");
-    corazon.src = favoritos.some(juego => juego.id === Number(idJuego)) ? "../img/Corazon_lleno.png" : "../img/Heart.png";
-    corazon.alt = "Añadir a favoritos";
     corazon.className = "corazon";
+    corazon.alt = "Añadir a favoritos";
+
+    function actualizarCorazon() {
+        const esFavorito = favoritos.some(
+            fav => fav.id === juego.id
+        );
+
+        corazon.src = esFavorito
+            ? "../img/HeartFull.png"
+            : "../img/HeartEmpty.webp";
+    }
+
+    actualizarCorazon();
 
     botonFavorito.append(corazon);
 
     botonFavorito.addEventListener("click", function () {
-        const inFavourites = favoritos.some(juego => juego.id === Number(idJuego));
-        console.log(inFavourites);
 
+        const esFavorito = favoritos.some(
+            fav => fav.id === juego.id
+        );
 
-        if (inFavourites) {
-            favoritos = favoritos.filter(fav => fav.id !== Number(idJuego));
-            corazon.src = "../img/Heart.png";
-            corazon.alt = "quitar de favoritos";
+        if (esFavorito) {
+            favoritos = favoritos.filter(
+                fav => fav.id !== juego.id
+            );
         } else {
             favoritos.push(juego);
-            corazon.src = "../img/Corazon_lleno.png";
-            corazon.alt = "Añadir a favoritos";
         }
-        localStorage.setItem("JuegosFavoritos", JSON.stringify(favoritos))
+
+        localStorage.setItem(
+            "JuegosFavorito",
+            JSON.stringify(favoritos)
+        );
+
+        actualizarCorazon();
     });
 
     const tituloContainer = document.createElement("div");
     tituloContainer.className = "titulo-container";
+
     tituloContainer.append(titulo, botonFavorito);
 
     // =========================
@@ -81,84 +118,80 @@ async function muestraDatos() {
     const datos = document.createElement("section");
     datos.className = "juego-datos";
 
-    // rating
+    // Valoración
     const rating = document.createElement("p");
     rating.className = "juego-rating";
 
-    const icono = document.createElement("img");
-    icono.src = "../../../img/Rating-Star.svg";
-    icono.alt = "";
-    icono.className = "rating-icon";
+    const iconoRating = document.createElement("img");
+    iconoRating.src = "../img/Rating-Star.svg";
+    iconoRating.alt = "";
+    iconoRating.className = "rating-icon";
 
-    const texto = document.createElement("span");
-    texto.textContent = juego.rating;
+    const textoRating = document.createElement("span");
+    textoRating.textContent = juego.rating;
 
-    rating.append(icono, texto);
+    rating.append(iconoRating, textoRating);
 
     // Fecha de lanzamiento
     const released = document.createElement("p");
     released.className = "juego-released";
 
-    const iconoReleased = document.createElement("img");
-    iconoReleased.src = "../img/Release-Date.png";
-    iconoReleased.alt = "";
-    iconoReleased.className = "released-icon";
-
     const textoReleased = document.createElement("span");
-    textoReleased.textContent = juego.released;
 
-    released.append(iconoReleased, textoReleased);
+    textoReleased.textContent = juego.released
+        ? juego.released
+        : "Fecha de lanzamiento desconocida";
 
-    // Añadir los datos
+    released.append(textoReleased);
+
     datos.append(rating, released);
 
-    
-    // Añadir información a la sección
-    info.append(tituloContainer, caps, datos, localizacion);
-    // Imagen e información arriba
-    parteSuperior.append(imagen, info);
+    info.append(tituloContainer, datos);
+
+    parteSuperior.append(info);
 
     // =========================
-    // CONTENEDOR DE CONSOLAS
+    // PLATAFORMAS
     // =========================
 
-    const consolasContainer = document.createElement("section");
-    consolasContainer.className = "consolas-container";
+    const plataformasContainer = document.createElement("section");
+    plataformasContainer.className = "consolas-container";
 
-    const tituloConsolas = document.createElement("h2");
-    tituloConsolas.textContent = "Consolas";
-    tituloConsolas.className = "consolas-titulo";
+    const tituloPlataformas = document.createElement("h2");
+    tituloPlataformas.textContent = "Disponible en";
 
-    consolasContainer.append(tituloConsolas);
+    const listaPlataformas = document.createElement("div");
+    listaPlataformas.className = "listaTarjetas";
 
-    // Recorrer las consolas disponibles (máximo 11)
-    const totalConsolas = Math.min(11, personaje.consolas.length);
+    plataformasContainer.append(tituloPlataformas, listaPlataformas);
 
-    for (let i = 0; i < totalConsolas; i++) {
-        const urlConsola = personaje.consolas[i];
+    if (juego.platforms && juego.platforms.length > 0) {
 
-        const consolaIndividual = await getElementByURL(
-            urlConsola,
-            "consola"
-        );
+        juego.platforms.forEach(function (elemento) {
 
-        const tarjeta = crearTarjetaConsolaFav(consolaIndividual);
+            const plataforma = document.createElement("p");
 
-        if (tarjeta) {
-            consolasContainer.append(tarjeta);
-        }
-    }
-    if (personaje.consolas.length > 11) {
-        const masConsolas = document.createElement("span");
-        masConsolas.textContent = `...${personaje.consolas.length - 11} consolas más`;
-        consolasContainer.append(masConsolas);
+            plataforma.className = "tarjeta plataforma";
+            plataforma.textContent = elemento.platform.name;
+
+            listaPlataformas.append(plataforma);
+        });
+
+    } else {
+
+        const mensaje = document.createElement("p");
+        mensaje.textContent = "No hay información sobre las plataformas.";
+
+        listaPlataformas.append(mensaje);
     }
 
     // =========================
     // AÑADIR TODO AL CONTENEDOR
     // =========================
 
-    container.append(parteSuperior, consolasContainer);
+    container.append(parteSuperior, plataformasContainer);
 }
 
+
+// Iniciar
 obtenerInfoJuego();
