@@ -44,4 +44,11 @@ function montarLista(listaJuegos) {
 
 }
 
+const slider = document.getElementById("valoracion");
+const valorActual = document.getElementById("valor-actual");
+
+slider.addEventListener("input", () => {
+    valorActual.textContent = Number(slider.value).toFixed(2);
+});
+
 await mostrarJuegos();
