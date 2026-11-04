@@ -1,5 +1,5 @@
-import { getJuegos } from "./main.js";
-import { crearTarjetaJuego } from "./tarjetaJuego.js";
+import { getJuegos } from "../../main.js";
+import { crearTarjetaJuego } from "../tarjetas/tarjetaJuego.js";
 
 let pagina = 1;
 let listaJuegos = [];
@@ -43,5 +43,12 @@ function montarLista(listaJuegos) {
     // }
 
 }
+
+const slider = document.getElementById("valoracion");
+const valorActual = document.getElementById("valor-actual");
+
+slider.addEventListener("input", () => {
+    valorActual.textContent = Number(slider.value).toFixed(2);
+});
 
 await mostrarJuegos();

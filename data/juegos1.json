@@ -1,0 +1,172 @@
+{
+    "count": 3,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 3328,
+            "slug": "the-witcher-3-wild-hunt",
+            "name": "The Witcher 3: Wild Hunt",
+            "released": "2015-05-18",
+            "background_image": null,
+            "rating": 4.67,
+            "metacritic": 92,
+            "playtime": 46,
+            "platforms": [
+                {
+                    "platform": {
+                        "id": 4,
+                        "name": "PC",
+                        "slug": "pc"
+                    }
+                },
+                {
+                    "platform": {
+                        "id": 18,
+                        "name": "PlayStation 4",
+                        "slug": "playstation4"
+                    }
+                }
+            ],
+            "genres": [
+                {
+                    "id": 4,
+                    "name": "Action",
+                    "slug": "action"
+                },
+                {
+                    "id": 5,
+                    "name": "RPG",
+                    "slug": "role-playing-games-rpg"
+                }
+            ],
+            "developers": [
+                {
+                    "id": 1,
+                    "name": "CD PROJEKT RED"
+                }
+            ],
+            "publishers": [
+                {
+                    "id": 1,
+                    "name": "CD PROJEKT RED"
+                }
+            ],
+            "esrb_rating": {
+                "id": 3,
+                "name": "Mature",
+                "slug": "mature"
+            }
+        },
+        {
+            "id": 3498,
+            "slug": "grand-theft-auto-v",
+            "name": "Grand Theft Auto V",
+            "released": "2013-09-17",
+            "background_image": null,
+            "rating": 4.47,
+            "metacritic": 92,
+            "playtime": 48,
+            "platforms": [
+                {
+                    "platform": {
+                        "id": 4,
+                        "name": "PC",
+                        "slug": "pc"
+                    }
+                },
+                {
+                    "platform": {
+                        "id": 187,
+                        "name": "PlayStation 5",
+                        "slug": "playstation5"
+                    }
+                }
+            ],
+            "genres": [
+                {
+                    "id": 3,
+                    "name": "Adventure",
+                    "slug": "adventure"
+                },
+                {
+                    "id": 4,
+                    "name": "Action",
+                    "slug": "action"
+                }
+            ],
+            "developers": [
+                {
+                    "id": 2,
+                    "name": "Rockstar North"
+                }
+            ],
+            "publishers": [
+                {
+                    "id": 2,
+                    "name": "Rockstar Games"
+                }
+            ],
+            "esrb_rating": {
+                "id": 4,
+                "name": "Mature",
+                "slug": "mature"
+            }
+        },
+        {
+            "id": 9767,
+            "slug": "hollow-knight",
+            "name": "Hollow Knight",
+            "released": "2017-02-24",
+            "background_image": null,
+            "rating": 4.42,
+            "metacritic": 87,
+            "playtime": 27,
+            "platforms": [
+                {
+                    "platform": {
+                        "id": 4,
+                        "name": "PC",
+                        "slug": "pc"
+                    }
+                },
+                {
+                    "platform": {
+                        "id": 7,
+                        "name": "Nintendo Switch",
+                        "slug": "nintendo-switch"
+                    }
+                }
+            ],
+            "genres": [
+                {
+                    "id": 3,
+                    "name": "Adventure",
+                    "slug": "adventure"
+                },
+                {
+                    "id": 51,
+                    "name": "Indie",
+                    "slug": "indie"
+                }
+            ],
+            "developers": [
+                {
+                    "id": 3,
+                    "name": "Team Cherry"
+                }
+            ],
+            "publishers": [
+                {
+                    "id": 3,
+                    "name": "Team Cherry"
+                }
+            ],
+            "esrb_rating": {
+                "id": 2,
+                "name": "Everyone 10+",
+                "slug": "everyone-10-plus"
+            }
+        }
+    ]
+}

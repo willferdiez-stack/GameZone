@@ -1,0 +1,67 @@
+{
+    "count": 6,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 4,
+            "name": "PC",
+            "slug": "pc",
+            "games_count": 250000,
+            "image_background": null,
+            "image": null,
+            "year_start": 1980,
+            "year_end": null
+        },
+        {
+            "id": 18,
+            "name": "PlayStation 4",
+            "slug": "playstation4",
+            "games_count": 12000,
+            "image_background": null,
+            "image": null,
+            "year_start": 2013,
+            "year_end": null
+        },
+        {
+            "id": 187,
+            "name": "PlayStation 5",
+            "slug": "playstation5",
+            "games_count": 3500,
+            "image_background": null,
+            "image": null,
+            "year_start": 2020,
+            "year_end": null
+        },
+        {
+            "id": 7,
+            "name": "Nintendo Switch",
+            "slug": "nintendo-switch",
+            "games_count": 8000,
+            "image_background": null,
+            "image": null,
+            "year_start": 2017,
+            "year_end": null
+        },
+        {
+            "id": 1,
+            "name": "Xbox One",
+            "slug": "xbox-one",
+            "games_count": 6000,
+            "image_background": null,
+            "image": null,
+            "year_start": 2013,
+            "year_end": 2020
+        },
+        {
+            "id": 186,
+            "name": "Xbox Series S/X",
+            "slug": "xbox-series-x",
+            "games_count": 2500,
+            "image_background": null,
+            "image": null,
+            "year_start": 2020,
+            "year_end": null
+        }
+    ]
+}

@@ -7,7 +7,7 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
     // Imagen del personaje
     const imgConsola = document.createElement("img");
     imgConsola.classList.add("imgConsola");
-    imgConsola.src = con.image;
+    imgConsola.src = con.image_background;
     imgConsola.alt = con.name;
     divTarjeta.appendChild(imgConsola);
 

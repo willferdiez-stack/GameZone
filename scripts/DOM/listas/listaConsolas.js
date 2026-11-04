@@ -1,5 +1,5 @@
-import { getConsolas } from "./main.js";
-import { crearTarjetaConsola } from "./tarjetaConsola.js";
+import { getConsolas } from "../../main.js";
+import { crearTarjetaConsola } from "../tarjetas/tarjetaConsola.js";
 
 let pagina = 1;
 let listaConsolas = [];
