@@ -42,7 +42,7 @@ function muestraDatos() {
     const parteSuperior = document.createElement("div");
     parteSuperior.className = "desarrollador-top";
 
-    // Imagen
+    // Imagen cuando la API funciona
     // if (desarrollador.imageBackground) {
     //     const imagen = document.createElement("img");
     //     imagen.src = desarrollador.imageBackground;
@@ -52,6 +52,7 @@ function muestraDatos() {
     //     parteSuperior.append(imagen);
     // }
 
+    // Imagen cuando la API NO funciona
     const imagen = document.createElement("img");
         imagen.src = `../img/${desarrollador.name}.png`;;
         imagen.alt = desarrollador.name;
@@ -129,7 +130,7 @@ function muestraDatos() {
     juegos.className = "desarrollador-juegos";
 
     const iconoJuegos = document.createElement("img");
-    iconoJuegos.src = "../img/Rating-Star.svg";
+    iconoJuegos.src = "../img/mando-blanco.png";
     iconoJuegos.alt = "";
     iconoJuegos.className = "rating-icon";
 

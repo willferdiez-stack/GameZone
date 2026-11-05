@@ -1,4 +1,4 @@
-import { getJuego } from "../../main.js";
+import { getJuego, getConsolas } from "../../main.js";
 import { crearTarjetaConsola } from "../tarjetas/tarjetaConsola.js";
 
 const idJuego = localStorage.getItem("IdJuego");
@@ -44,7 +44,7 @@ function muestraDatos() {
     const parteSuperior = document.createElement("div");
     parteSuperior.className = "juego-top";
 
-    // Imagen
+    // Imagen cuando la API funciona
     // if (juego.background_image) {
     //     const imagen = document.createElement("img");
     //     imagen.src = juego.background_image;
@@ -55,6 +55,7 @@ function muestraDatos() {
     //     parteSuperior.append(imagen);
     // }
 
+    // Imagen cuando la API NO funciona
     const imagen = document.createElement("img");
     imagen.src = `../img/${juego.name}.png`;
     imagen.alt = juego.name;
@@ -145,13 +146,18 @@ function muestraDatos() {
     const released = document.createElement("p");
     released.className = "juego-released";
 
+    const iconoReleased = document.createElement("img");
+    iconoReleased.src = "../img/Release-Date.png";
+    iconoReleased.alt = "";
+    iconoReleased.className = "rating-icon";
+
     const textoReleased = document.createElement("span");
 
     textoReleased.textContent = juego.released
         ? juego.released
         : "Fecha de lanzamiento desconocida";
 
-    released.append(textoReleased);
+    released.append(iconoReleased, textoReleased);
 
     datos.append(rating, released);
 
@@ -176,16 +182,19 @@ function muestraDatos() {
 
     if (juego.platforms && juego.platforms.length > 0) {
 
-        juego.platforms.forEach(function (elemento) {
+        juego.platforms.forEach(async function (elemento) {
 
-            // const plataforma = document.createElement("p");
+            const consolas = await getConsolas();
 
-            // plataforma.className = "tarjeta plataforma";
-            // plataforma.textContent = elemento.platform.name;
+            const consola = consolas.consolas.find(
+                con => con.id === elemento.platform.id
+            );
 
-            const plataforma = crearTarjetaConsola(elemento.platform);
+            if (consola) {
+                const plataforma = crearTarjetaConsola(consola);
+                listaPlataformas.append(plataforma);
+            }
 
-            listaPlataformas.append(plataforma);
         });
 
     } else {

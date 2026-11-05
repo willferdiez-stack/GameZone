@@ -43,15 +43,6 @@ function muestraDatos() {
     parteSuperior.className = "consola-top";
 
     // Imagen
-    // if (consola.image_background) {
-    //     const imagen = document.createElement("img");
-    //     imagen.src = consola.image_background;
-    //     imagen.alt = consola.name;
-    //     imagen.className = "consola-image";
-
-    //     parteSuperior.append(imagen);
-    // }
-
     const imagen = document.createElement("img");
     imagen.src = `../img/${consola.name}.png`;
     imagen.alt = consola.name;
@@ -129,7 +120,7 @@ function muestraDatos() {
     juegos.className = "consola-juegos";
 
     const iconoJuegos = document.createElement("img");
-    iconoJuegos.src = "../img/Rating-Star.svg";
+    iconoJuegos.src = "../img/mando-blanco.png";
     iconoJuegos.alt = "";
     iconoJuegos.className = "rating-icon";
 
@@ -137,26 +128,58 @@ function muestraDatos() {
     textoJuegos.textContent = consola.games_count;
 
     juegos.append(iconoJuegos, textoJuegos);
-
     datos.append(juegos);
 
-    // Año de inicio
-    const inicio = document.createElement("p");
-    inicio.textContent = consola.year_start
-        ? `Año de lanzamiento: ${consola.year_start}`
-        : "Año de lanzamiento desconocido";
+    // =========================
+    // AÑO DE INICIO
+    // =========================
 
+    const inicio = document.createElement("p");
+    inicio.className = "consola-inicio";
+
+    const iconoInicio = document.createElement("img");
+    iconoInicio.src = "../img/Release-Date.png";
+    iconoInicio.alt = "";
+    iconoInicio.className = "rating-icon";
+
+    const textoInicio = document.createElement("span");
+    textoInicio.textContent = consola.year_start
+        ? `Fecha de lanzamiento: ${consola.year_start}`
+        : "Fecha de lanzamiento desconocida";
+
+    inicio.append(iconoInicio, textoInicio);
     datos.append(inicio);
 
-    // Año de finalización
-    if (consola.year_end) {
-        const fin = document.createElement("p");
-        fin.textContent = `Año de finalización: ${consola.year_end}`;
-        datos.append(fin);
+    // =========================
+    // AÑO DE FINALIZACIÓN
+    // =========================
+
+    const fin = document.createElement("p");
+    fin.className = "consola-fin";
+
+    const iconoFin = document.createElement("img");
+    iconoFin.src = "../img/Release-Date.png";
+    iconoFin.alt = "";
+    iconoFin.className = "rating-icon";
+
+    const textoFin = document.createElement("span");
+
+    if (consola.year_end === "En activo") {
+        textoFin.textContent = "Actualmente en activo";
+    } else if (consola.year_end) {
+        textoFin.textContent = `Año de finalización: ${consola.year_end}`;
+    } else {
+        textoFin.textContent = "Fecha de finalización desconocida";
     }
 
-    info.append(tituloContainer, datos);
+    fin.append(iconoFin, textoFin);
+    datos.append(fin);
 
+    // =========================
+    // UNIR ELEMENTOS
+    // =========================
+
+    info.append(tituloContainer, datos);
     parteSuperior.append(info);
 
     // =========================
