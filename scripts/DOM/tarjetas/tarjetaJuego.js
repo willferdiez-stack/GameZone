@@ -43,22 +43,29 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
     ) || [];
 
     // Corazón de favoritos
-    const imgFavoritos = document.createElement("img");
-    imgFavoritos.classList.add("favorito");
+    const botonFavorito = document.createElement("button");
+    botonFavorito.classList.add("favorito");
+    botonFavorito.type = "button";
 
-    // Comprobar si el personaje ya es favorito
+    // Imagen del corazón
+    const corazon = document.createElement("img");
+
+    // Comprobar si el juego ya es favorito
     const existe = favoritos.find(juego => juego.id === vg.id);
 
     if (existe) {
-        imgFavoritos.src = "../img/HeartFull.png";
-        imgFavoritos.alt = "Quitar de favoritos";
+        corazon.src = "../img/HeartFull.png";
+        corazon.alt = "Quitar de favoritos";
     } else {
-        imgFavoritos.src = "../img/HeartEmpty.webp";
-        imgFavoritos.alt = "Añadir a favoritos";
+        corazon.src = "../img/HeartEmpty.webp";
+        corazon.alt = "Añadir a favoritos";
     }
 
+    // Introducir la imagen dentro del botón
+    botonFavorito.appendChild(corazon);
+
     // Pulsar el corazón
-    imgFavoritos.addEventListener("click", function () {
+    botonFavorito.addEventListener("click", function () {
 
         favoritos = JSON.parse(
             localStorage.getItem("JuegosFavorito")
@@ -75,8 +82,8 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
                 juego => juego.id !== vg.id
             );
 
-            imgFavoritos.src = "../img/HeartEmpty.webp";
-            imgFavoritos.alt = "Añadir a favoritos";
+            corazon.src = "../img/HeartEmpty.webp";
+            corazon.alt = "Añadir a favoritos";
 
             // Si estamos en Favoritos, retirar la tarjeta
             if (esFavoritos) {
@@ -88,8 +95,8 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
             // Añadir a favoritos
             favoritos.push(vg);
 
-            imgFavoritos.src = "../img/HeartFull.png";
-            imgFavoritos.alt = "Quitar de favoritos";
+            corazon.src = "../img/HeartFull.png";
+            corazon.alt = "Quitar de favoritos";
         }
 
         // Guardar los cambios
@@ -99,7 +106,7 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
         );
     });
 
-    divTarjetaBody.appendChild(imgFavoritos);
+    divTarjetaBody.appendChild(botonFavorito);
 
     // Botón Ver más
     const buttonVerMas = document.createElement("button");
@@ -109,7 +116,7 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
         localStorage.setItem("IdJuego", vg.id);
         location.href = "infoJuego.html";
     });
-    
+
     buttonVerMas.appendChild(document.createTextNode(" Ver más"));
 
     divTarjeta.appendChild(buttonVerMas);

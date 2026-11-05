@@ -4,7 +4,7 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
     const divTarjeta = document.createElement("div");
     divTarjeta.classList.add("tarjeta");
 
-    // Imagen del personaje
+    // Imagen de la consola
     const imgConsola = document.createElement("img");
     imgConsola.classList.add("imgConsola");
     imgConsola.src = con.image_background;
@@ -27,7 +27,7 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
     p.textContent = con.name;
     divInfo.appendChild(p);
 
-    // Información del personaje
+    // Información de la consola
     const ul = document.createElement("ul");
     divInfo.appendChild(ul);
 
@@ -41,22 +41,29 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
     ) || [];
 
     // Corazón de favoritos
-    const imgFavoritos = document.createElement("img");
-    imgFavoritos.classList.add("favorito");
+    const botonFavorito = document.createElement("button");
+    botonFavorito.classList.add("favorito");
+    botonFavorito.type = "button";
 
-    // Comprobar si el personaje ya es favorito
+    // Imagen del corazón
+    const corazon = document.createElement("img");
+
+    // Comprobar si la consola ya es favorita
     const existe = favoritos.find(consola => consola.id === con.id);
 
     if (existe) {
-        imgFavoritos.src = "../img/HeartFull.png";
-        imgFavoritos.alt = "Quitar de favoritos";
+        corazon.src = "../img/HeartFull.png";
+        corazon.alt = "Quitar de favoritos";
     } else {
-        imgFavoritos.src = "../img/HeartEmpty.webp";
-        imgFavoritos.alt = "Añadir a favoritos";
+        corazon.src = "../img/HeartEmpty.webp";
+        corazon.alt = "Añadir a favoritos";
     }
 
+    // Introducir la imagen dentro del botón
+    botonFavorito.appendChild(corazon);
+
     // Pulsar el corazón
-    imgFavoritos.addEventListener("click", function () {
+    botonFavorito.addEventListener("click", function () {
 
         favoritos = JSON.parse(
             localStorage.getItem("ConsolasFavorito")
@@ -73,8 +80,8 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
                 consola => consola.id !== con.id
             );
 
-            imgFavoritos.src = "../img/HeartEmpty.webp";
-            imgFavoritos.alt = "Añadir a favoritos";
+            corazon.src = "../img/HeartEmpty.webp";
+            corazon.alt = "Añadir a favoritos";
 
             // Si estamos en Favoritos, retirar la tarjeta
             if (esFavoritos) {
@@ -86,8 +93,8 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
             // Añadir a favoritos
             favoritos.push(con);
 
-            imgFavoritos.src = "../img/HeartFull.png";
-            imgFavoritos.alt = "Quitar de favoritos";
+            corazon.src = "../img/HeartFull.png";
+            corazon.alt = "Quitar de favoritos";
         }
 
         // Guardar los cambios
@@ -97,7 +104,7 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
         );
     });
 
-    divTarjetaBody.appendChild(imgFavoritos);
+    divTarjetaBody.appendChild(botonFavorito);
 
     // Botón Ver más
     const buttonVerMas = document.createElement("button");
