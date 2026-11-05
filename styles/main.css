@@ -21,7 +21,9 @@ body {
    TÍTULOS
    ============================== */
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: #ffffff;
 }
 
@@ -85,4 +87,61 @@ main {
 ::selection {
     background-color: #ff4545;
     color: #101014;
+}
+
+/* ==============================
+   BOTÓN VOLVER ARRIBA
+   ============================== */
+
+#volver-arriba {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #ff5959, #c62828);
+    color: white;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgb(0 0 0 / 35%);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.2s ease;
+}
+
+#volver-arriba.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#volver-arriba:hover {
+    transform: translateY(-4px);
+}
+
+@media (max-width: 600px) {
+    #volver-arriba {
+        width: 42px;
+        height: 42px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 24px;
+    }
 }

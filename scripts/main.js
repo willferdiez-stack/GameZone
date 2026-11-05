@@ -415,4 +415,28 @@ export async function getElementByURL(url, type = "juego" || "desarrollador" || 
     return element;
 }
 
+//Botón y funcionalidad de volver arriba
+const botonVolverArriba = document.getElementById("volver-arriba");
+
+// Mostrar u ocultar el botón al desplazarse
+window.addEventListener("scroll", function () {
+
+    if (window.scrollY > 300) {
+        botonVolverArriba.classList.add("visible");
+    } else {
+        botonVolverArriba.classList.remove("visible");
+    }
+
+});
+
+// Volver arriba al pulsar el botón
+botonVolverArriba.addEventListener("click", function () {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
 cargarHeaderFooter();
