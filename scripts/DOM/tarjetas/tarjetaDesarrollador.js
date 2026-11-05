@@ -7,7 +7,8 @@ export function crearTarjetaDesarrollador(dev, esFavoritos = false) {
     // Imagen del desarrollador
     const imgDev = document.createElement("img");
     imgDev.classList.add("imgDev");
-    imgDev.src = dev.imageBackground;
+    // imgDev.src = dev.imageBackground;
+    imgDev.src = `../img/${dev.name}.png`;
     imgDev.alt = dev.name;
     divTarjeta.appendChild(imgDev);
 

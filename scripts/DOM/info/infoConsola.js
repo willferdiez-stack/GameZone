@@ -43,14 +43,21 @@ function muestraDatos() {
     parteSuperior.className = "consola-top";
 
     // Imagen
-    if (consola.image_background) {
-        const imagen = document.createElement("img");
-        imagen.src = consola.image_background;
-        imagen.alt = consola.name;
-        imagen.className = "consola-image";
+    // if (consola.image_background) {
+    //     const imagen = document.createElement("img");
+    //     imagen.src = consola.image_background;
+    //     imagen.alt = consola.name;
+    //     imagen.className = "consola-image";
 
-        parteSuperior.append(imagen);
-    }
+    //     parteSuperior.append(imagen);
+    // }
+
+    const imagen = document.createElement("img");
+    imagen.src = `../img/${consola.name}.png`;
+    imagen.alt = consola.name;
+    imagen.className = "consola-image";
+
+    parteSuperior.append(imagen);
 
     // Información
     const info = document.createElement("section");

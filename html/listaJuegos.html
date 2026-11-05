@@ -8,6 +8,7 @@
     <script type="module" src="../scripts/main.js"></script>
     <script type="module" src="../scripts/DOM/listas/listaJuegos.js"></script>
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/filtros.css">
     <link rel="stylesheet" href="../styles/listas.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
@@ -22,8 +23,15 @@
     <form id="formulario-busqueda" class="formulario-busqueda">
         <input type="text" id="busqueda" placeholder="Buscar juego">
 
-        <input type="range" min="1" max="5" step="0.01" value="5" id="valoracion" class="slider">
-        <output id="valor-actual">5.00</output>
+        <div class="filtro-valoracion">
+            <label for="valoracion">Puntuación mínima</label>
+
+            <div class="valoracion-control">
+                <input type="range" min="1" max="5" step="0.01" value="5" id="valoracion" class="slider">
+
+                <output id="valor-actual">5.00</output>
+            </div>
+        </div>
 
         <label for="ordenar">Ordenar por:</label>
         <select id="ordenar">

@@ -1,4 +1,5 @@
 import { getJuego } from "../../main.js";
+import { crearTarjetaConsola } from "../tarjetas/tarjetaConsola.js";
 
 const idJuego = localStorage.getItem("IdJuego");
 
@@ -44,14 +45,22 @@ function muestraDatos() {
     parteSuperior.className = "juego-top";
 
     // Imagen
-    if (juego.background_image) {
-        const imagen = document.createElement("img");
-        imagen.src = juego.background_image;
-        imagen.alt = juego.name;
-        imagen.className = "juego-image";
+    // if (juego.background_image) {
+    //     const imagen = document.createElement("img");
+    //     imagen.src = juego.background_image;
+    //     imagen.src = `../img/${juego.name}.png`;
+    //     imagen.alt = juego.name;
+    //     imagen.className = "juego-image";
 
-        parteSuperior.append(imagen);
-    }
+    //     parteSuperior.append(imagen);
+    // }
+
+    const imagen = document.createElement("img");
+    imagen.src = `../img/${juego.name}.png`;
+    imagen.alt = juego.name;
+    imagen.className = "juego-image";
+
+    parteSuperior.append(imagen);
 
     // Información
     const info = document.createElement("section");
@@ -169,10 +178,12 @@ function muestraDatos() {
 
         juego.platforms.forEach(function (elemento) {
 
-            const plataforma = document.createElement("p");
+            // const plataforma = document.createElement("p");
 
-            plataforma.className = "tarjeta plataforma";
-            plataforma.textContent = elemento.platform.name;
+            // plataforma.className = "tarjeta plataforma";
+            // plataforma.textContent = elemento.platform.name;
+
+            const plataforma = crearTarjetaConsola(elemento.platform);
 
             listaPlataformas.append(plataforma);
         });

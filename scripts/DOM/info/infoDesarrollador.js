@@ -43,14 +43,21 @@ function muestraDatos() {
     parteSuperior.className = "desarrollador-top";
 
     // Imagen
-    if (desarrollador.imageBackground) {
-        const imagen = document.createElement("img");
-        imagen.src = desarrollador.imageBackground;
+    // if (desarrollador.imageBackground) {
+    //     const imagen = document.createElement("img");
+    //     imagen.src = desarrollador.imageBackground;
+    //     imagen.alt = desarrollador.name;
+    //     imagen.className = "desarrollador-image";
+
+    //     parteSuperior.append(imagen);
+    // }
+
+    const imagen = document.createElement("img");
+        imagen.src = `../img/${desarrollador.name}.png`;;
         imagen.alt = desarrollador.name;
         imagen.className = "desarrollador-image";
 
         parteSuperior.append(imagen);
-    }
 
     // Información
     const info = document.createElement("section");

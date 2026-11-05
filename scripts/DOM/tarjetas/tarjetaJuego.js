@@ -10,7 +10,8 @@ export function crearTarjetaJuego(vg, esFavoritos = false) {
     // Imagen del personaje
     const imgJuego = document.createElement("img");
     imgJuego.classList.add("imgJuego");
-    imgJuego.src = vg.background_image;
+    // imgJuego.src = vg.background_image;
+    imgJuego.src = `../img/${vg.name}.png`;
     imgJuego.alt = vg.name;
     divTarjeta.appendChild(imgJuego);
 
