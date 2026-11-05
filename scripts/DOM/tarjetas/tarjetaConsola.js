@@ -32,9 +32,13 @@ export function crearTarjetaConsola(con, esFavoritos = false) {
     const ul = document.createElement("ul");
     divInfo.appendChild(ul);
 
-    ul.appendChild(crearLista(con.games_count, "../img/Rating-Star.svg"));
+    ul.appendChild(crearLista(con.games_count, "../img/mando-blanco.png"));
     ul.appendChild(crearLista(con.year_start, "../img/Release-Date.png"));
-    ul.appendChild(crearLista(con.year_end, "../img/Release-Date.png"));
+    if (con.year_end === "En activo") {
+        ul.appendChild(crearLista("Vivita y coleando", "../img/Release-Date.png"));
+    } else {
+        ul.appendChild(crearLista(`Descatalogada desde ${con.year_end}`, "../img/Release-Date.png"));
+    }
 
     // Recuperar los favoritos guardados
     let favoritos = JSON.parse(

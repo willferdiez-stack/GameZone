@@ -31,17 +31,6 @@ function montarLista(listaConsolas) {
         lista.appendChild(tarjeta);
 
     });
-
-    // actualizarBotones(pagina, maxPaginas);
-
-    // const pagActual = document.getElementById("numPagina");
-
-    // if (listaJuegos.length === 0) {
-    //     pagActual.textContent = "No hay resultados";
-    // } else {
-    //     pagActual.textContent = `Página ${pagina} de ${maxPaginas}`;
-    // }
-
 }
 
 await mostrarConsolas();

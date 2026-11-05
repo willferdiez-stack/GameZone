@@ -10,8 +10,8 @@
             "games_count": 250000,
             "image_background": null,
             "image": null,
-            "year_start": 1980,
-            "year_end": null
+            "year_start": "1980-01-01",
+            "year_end": "En activo"
         },
         {
             "id": 18,
@@ -20,8 +20,8 @@
             "games_count": 12000,
             "image_background": null,
             "image": null,
-            "year_start": 2013,
-            "year_end": null
+            "year_start": "2013-11-15",
+            "year_end": "En activo"
         },
         {
             "id": 187,
@@ -30,8 +30,8 @@
             "games_count": 3500,
             "image_background": null,
             "image": null,
-            "year_start": 2020,
-            "year_end": null
+            "year_start": "2020-11-12",
+            "year_end": "En activo"
         },
         {
             "id": 7,
@@ -40,8 +40,8 @@
             "games_count": 8000,
             "image_background": null,
             "image": null,
-            "year_start": 2017,
-            "year_end": null
+            "year_start": "2017-03-03",
+            "year_end": "En activo"
         },
         {
             "id": 1,
@@ -50,8 +50,8 @@
             "games_count": 6000,
             "image_background": null,
             "image": null,
-            "year_start": 2013,
-            "year_end": 2020
+            "year_start": "2013-11-22",
+            "year_end": "2020"
         },
         {
             "id": 186,
@@ -60,8 +60,8 @@
             "games_count": 2500,
             "image_background": null,
             "image": null,
-            "year_start": 2020,
-            "year_end": null
+            "year_start": "2020-11-10",
+            "year_end": "En activo"
         }
     ]
 }

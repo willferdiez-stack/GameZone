@@ -32,7 +32,7 @@ export function crearTarjetaDesarrollador(dev, esFavoritos = false) {
     const ul = document.createElement("ul");
     divInfo.appendChild(ul);
 
-    ul.appendChild(crearLista(dev.gamesCount, "../img/Rating-Star.svg"));
+    ul.appendChild(crearLista(dev.gamesCount, "../img/mando-blanco.png"));
 
     // Recuperar los favoritos guardados
     let favoritos = JSON.parse(
