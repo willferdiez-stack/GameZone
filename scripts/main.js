@@ -34,6 +34,84 @@ export async function getJuegos(numberPage = 1) {
     };
 }
 
+// Función para filtrar los juegos desde el JSON local
+export async function getJuegosFiltrados(filtro) {
+    const url = new URL("../data/juegos.json", import.meta.url);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error("Error al obtener los datos del juego");
+    }
+
+    const data = await response.json();
+
+    // Convertir los datos en objetos Juego
+    const juegos = data.results.map(j => new Juego(j));
+
+    // Aplicar los filtros
+    const juegosFiltrados = juegos.filter(juego => {
+
+        // Comprobar si coincide el nombre
+        const coincideNombre = !filtro.nombre ||
+            juego.name.toLowerCase().includes(filtro.nombre);
+
+        // Comprobar si alcanza la puntuación mínima
+        const coincideRating = Number(juego.rating) >= Number(filtro.rating);
+
+        return coincideNombre && coincideRating;
+    });
+
+    // Ordenar los juegos
+    switch (filtro.orden) {
+
+        case "nombre-asc":
+            juegosFiltrados.sort((a, b) =>
+                a.name.localeCompare(b.name)
+            );
+            break;
+
+        case "nombre-desc":
+            juegosFiltrados.sort((a, b) =>
+                b.name.localeCompare(a.name)
+            );
+            break;
+
+        case "puntuacion-desc":
+            juegosFiltrados.sort((a, b) =>
+                Number(b.rating) - Number(a.rating)
+            );
+            break;
+
+        case "puntuacion-asc":
+            juegosFiltrados.sort((a, b) =>
+                Number(a.rating) - Number(b.rating)
+            );
+            break;
+
+        case "fecha-desc":
+            juegosFiltrados.sort((a, b) =>
+                new Date(b.released || 0) - new Date(a.released || 0)
+            );
+            break;
+
+        case "fecha-asc":
+            juegosFiltrados.sort((a, b) =>
+                new Date(a.released || 0) - new Date(b.released || 0)
+            );
+            break;
+    }
+
+    return {
+        juegos: juegosFiltrados,
+        info: {
+            count: juegosFiltrados.length
+        }
+    };
+}
+
+
+
 // Función para obtener los desarrolladores desde el JSON local
 export async function getDesarrolladores(numberPage = 1) {
 
@@ -95,6 +173,42 @@ export async function getConsolas(numberPage = 1) {
         }
     };
 }
+
+
+// Función para filtrar los juegos desde la API local
+// export async function getJuegosFiltrados(filtro) {
+//     const url = new URL("../data/juegos.json", import.meta.url);
+
+//     // Aplicar los filtros seleccionados
+//     if (filtro.nombre) {
+//         url.searchParams.set("name", filtro.nombre);
+//     }
+
+//     if (filtro.rating) {
+//         url.searchParams.set("rating", filtro.rating);
+//     }
+
+//     const response = await fetch(url);
+//     if (!response.ok) {
+//         throw new Error('Error al obtener los datos del juego');
+//     }
+
+//     const data = await response.json();
+
+//     if (!data.results || data.results.length === 0) {
+//         throw new Error("No hay datos")
+//     }
+
+//     const juegos = data.results.map(j =>
+//         new Juego(j)
+//     )
+
+//     return {
+//         juegos,
+//         info: data.info
+//     };
+// }
+
 
 // Función para obtener los juegos desde la API
 // export async function getJuegos(numberPage = 1) {
@@ -201,6 +315,82 @@ export async function getConsolas(numberPage = 1) {
 //     };
 // }
 
+/**
+ * @param {number} id id del juego
+ * @returns información del juego individual
+ */
+export async function getJuego(id) {
+    const url = new URL("../data/juegos.json", import.meta.url);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("Error al obtener los datos del juego");
+    }
+
+    const data = await response.json();
+
+    console.log("ID recibido:", id);
+    console.log("ID guardado en localStorage:", localStorage.getItem("IdJuego"));
+    console.log("IDs disponibles en el JSON:", data.results.map(j => j.id));
+
+    const juegoData = data.results.find(j => j.id === Number(id));
+
+    if (!juegoData) {
+        throw new Error("No se ha encontrado el juego");
+    }
+
+    const juego = new Juego(juegoData);
+    return juego;
+}
+
+/**
+ * @param {number} id id del desarrollador
+ * @returns información del desarrollador individual
+ */
+export async function getDesarrollador(id) {
+    const url = new URL("../data/desarrolladores.json", import.meta.url);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("Error al obtener los datos del desarrollador");
+    }
+
+    const data = await response.json();
+
+    const desarrolladorData = data.results.find(d => d.id === Number(id));
+
+    if (!desarrolladorData) {
+        throw new Error("No se ha encontrado el desarrollador");
+    }
+
+    const desarrollador = new Desarrollador(desarrolladorData);
+    return desarrollador;
+}
+
+/**
+ * @param {number} id id de la consola
+ * @returns información de la consola individual
+ */
+export async function getConsola(id) {
+    const url = new URL("../data/consolas.json", import.meta.url);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("Error al obtener los datos de la consola");
+    }
+
+    const data = await response.json();
+
+    const consolaData = data.results.find(c => c.id === Number(id));
+
+    if (!consolaData) {
+        throw new Error("No se ha encontrado la consola");
+    }
+
+    const consola = new Consola(consolaData);
+    return consola;
+}
+
 export async function getElementByURL(url, type = "juego" || "desarrollador" || "consola") {
     const API_URL = url;
 
@@ -224,5 +414,29 @@ export async function getElementByURL(url, type = "juego" || "desarrollador" || 
 
     return element;
 }
+
+//Botón y funcionalidad de volver arriba
+const botonVolverArriba = document.getElementById("volver-arriba");
+
+// Mostrar u ocultar el botón al desplazarse
+window.addEventListener("scroll", function () {
+
+    if (window.scrollY > 300) {
+        botonVolverArriba.classList.add("visible");
+    } else {
+        botonVolverArriba.classList.remove("visible");
+    }
+
+});
+
+// Volver arriba al pulsar el botón
+botonVolverArriba.addEventListener("click", function () {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
 
 cargarHeaderFooter();

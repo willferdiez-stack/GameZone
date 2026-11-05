@@ -1,0 +1,186 @@
+/* ==============================
+   FORMULARIO DE BÚSQUEDA
+   ============================== */
+
+.formulario-busqueda {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    padding: 22px;
+
+    background-color: #1e1e24;
+    border: 1px solid #33333d;
+    border-radius: 15px;
+
+    box-shadow: 0 4px 12px rgb(0 0 0 / 25%);
+}
+
+/* ==============================
+   CAMPO DE BÚSQUEDA
+   ============================== */
+
+.formulario-busqueda input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+
+    padding: 12px 15px;
+
+    background-color: #151515;
+    color: white;
+
+    border: 1px solid #454552;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formulario-busqueda input[type="text"]:focus {
+    border-color: #ff5959;
+    box-shadow: 0 0 0 3px rgb(255 89 89 / 15%);
+}
+
+.formulario-busqueda input::placeholder {
+    color: #888894;
+}
+
+/* ==============================
+   VALORACIÓN
+   ============================== */
+
+.filtro-valoracion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.filtro-valoracion label {
+    color: #b5b5c0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.valoracion-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.valoracion-control .slider {
+    flex: 1;
+    min-width: 0;
+    accent-color: #ff5959;
+    cursor: pointer;
+}
+
+.formulario-busqueda output {
+    min-width: 45px;
+    color: #ff5959;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ==============================
+   ORDENACIÓN
+   ============================== */
+
+.formulario-busqueda label {
+    color: #b5b5c0;
+    font-size: 0.95rem;
+}
+
+.formulario-busqueda select {
+    padding: 11px 14px;
+
+    background-color: #151515;
+    color: white;
+
+    border: 1px solid #454552;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    cursor: pointer;
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+.formulario-busqueda select:focus {
+    border-color: #ff5959;
+}
+
+/* ==============================
+   BOTÓN BUSCAR
+   ============================== */
+
+.formulario-busqueda button {
+    padding: 12px 22px;
+
+    background: linear-gradient(135deg, #ff5959, #c62828);
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 0.95rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formulario-busqueda button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(255 89 89 / 25%);
+}
+
+/* ==============================
+   DISEÑO RESPONSIVE
+   ============================== */
+
+@media (max-width: 750px) {
+
+    .formulario-busqueda {
+        gap: 14px;
+    }
+
+    .formulario-busqueda input[type="text"] {
+        flex-basis: 100%;
+    }
+
+    .formulario-busqueda .slider {
+        flex: 1;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .formulario-busqueda {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+    }
+
+    .formulario-busqueda input[type="text"],
+    .formulario-busqueda select,
+    .formulario-busqueda button {
+        width: 100%;
+    }
+
+    .formulario-busqueda .slider {
+        width: 100%;
+    }
+}
